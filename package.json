@@ -1,26 +1,32 @@
 {
-  "name": "node-db2-project",
+  "name": "node-db2-guided",
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
+    "up": "knex migrate up",
+    "down": "knex migrate down",
+    "latest": "knex migrate:latest",
+    "rollback": "knex migrate:rollback",
+    "seed": "knex seed:run",
+    "resetdb": "npm run rollback && run latest && npm run seed",
+    "start": "node index.js",
     "server": "nodemon index.js",
-    "test": "cross-env NODE_ENV=testing jest --verbose --runInBand"
-  },
-  "devDependencies": {
-    "@types/jest": "^27.5.0",
-    "cross-env": "^7.0.3",
-    "eslint": "^8.15.0",
-    "jest": "^28.1.0",
-    "nodemon": "^2.0.16",
-    "supertest": "^6.2.3"
-  },
-  "dependencies": {
-    "sqlite3": "^5.0.8",
-    "express": "^4.18.1",
-    "knex": "^2.0.0"
+    "ketchup": "git fetch && git reset --hard origin/lecture"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/bloominstituteoftechnology/node-db2-project.git"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "knex": "^2.4.2",
+    "sqlite3": "^5.1.4",
+    "vin-validator": "^1.0.0"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.1.1",
+    "eslint": "^9.1.1",
+    "globals": "^15.0.0",
+    "nodemon": "^2.0.21"
   }
 }
