@@ -13,15 +13,16 @@ const getAll = () => {
   return db('cars');
 }
 
-const getById = () => {
-  // DO YOUR MAGIC
+async function getById(cars_id) {
+  const result = await db('cars').where('cars_id', cars_id).first()
+  return result
 }
 
-const create = () => {
-  // DO YOUR MAGIC
+async function create(car) {
+  const [cars_id] = await db('cars').insert(car); // corrected table name
+  return getById(cars_id);
 }
-
-
+        
 module.exports = {
   getAll,
   getById,
